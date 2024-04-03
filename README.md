@@ -5,6 +5,7 @@
  - `/` -> Página principal en la que se muestren todos los pokemones.
  - `/pokemon/:name` -> Página única por cada pokemon
  - `/search` -> Página de búsqueda de pokemones
+ - `/add` -> Página de creación de pokemon
 
 
 ## Enunciado 

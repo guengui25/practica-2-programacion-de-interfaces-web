@@ -29,6 +29,8 @@ const PokemonSearch: FunctionComponent = () => {
     };
 
     return (
+    <>
+    <h1 class="Titulo">Search Pokemon</h1>
     <div class="PokemonSearch">
         <label for="PokemonSearch">Pokemon name:</label>
         <input type="text" id="PokemonSearch" name="PokemonSearch" 
@@ -48,6 +50,8 @@ const PokemonSearch: FunctionComponent = () => {
                     />
                 ))}
     </div>
+    </>
+    
     );
 }
 
