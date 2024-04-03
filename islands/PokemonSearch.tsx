@@ -39,7 +39,7 @@ const PokemonSearch: FunctionComponent = () => {
         />
 
         <button onClick={handleSearch}>Search</button>
-        {error && <p>{error}</p>}
+        {error && <p class="Error">{error}</p>}
         {pokemones && pokemones.map((pokemon: Pokemon) => (
                     <PokemonItem
                         key={pokemon._id} // Importante: se debe agregar una key única para cada elemento de la lista

@@ -1,10 +1,14 @@
 import { FunctionComponent } from "preact";
 
 import {Pokemon} from "../types.ts"
+import { useState } from "preact/hooks";
 
+import PokemonDelete from "./PokemonDelete.tsx";
 
 const PokemonItem: FunctionComponent<Pokemon> = (props) => {
     const {_id,name,image,sound} = props;
+
+    const [deleteModal, setDeleteModal] = useState<boolean>(false);
     
     const alternativeText = `Photo of the pokemon with id ${_id}`;
     const soundID = `SonidoPokemon ${_id}`;
@@ -18,7 +22,7 @@ const PokemonItem: FunctionComponent<Pokemon> = (props) => {
     // AGREGAR LO DEL MODAL PARA ELIMINAR
 
     const DeletePokemon = () => {
-        // Aquí se debe implementar la eliminación del pokemon
+        setDeleteModal(true);
     }
 
     return (
@@ -28,6 +32,12 @@ const PokemonItem: FunctionComponent<Pokemon> = (props) => {
         <button class="BotonSonido" onClick={PlaySound}>🔊</button>
         <audio id={soundID} src={sound}/>
         <button class="BotonEliminar" onClick={DeletePokemon}>Eliminar</button>
+        {deleteModal && 
+            <div class = "Modal"> 
+                <PokemonDelete name={name}/>
+                <button class="close" onClick={() => setDeleteModal(false)}>Cerrar</button>
+            </div>
+            }
     </div>
     );
 }

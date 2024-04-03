@@ -13,6 +13,7 @@ import * as $index from "./routes/index.tsx";
 import * as $pokemon_name_ from "./routes/pokemon/[name].tsx";
 import * as $search from "./routes/search.tsx";
 import * as $PokemonCreate from "./islands/PokemonCreate.tsx";
+import * as $PokemonDelete from "./islands/PokemonDelete.tsx";
 import * as $PokemonItem from "./islands/PokemonItem.tsx";
 import * as $PokemonSearch from "./islands/PokemonSearch.tsx";
 import * as $PokemonesList from "./islands/PokemonesList.tsx";
@@ -33,6 +34,7 @@ const manifest = {
   },
   islands: {
     "./islands/PokemonCreate.tsx": $PokemonCreate,
+    "./islands/PokemonDelete.tsx": $PokemonDelete,
     "./islands/PokemonItem.tsx": $PokemonItem,
     "./islands/PokemonSearch.tsx": $PokemonSearch,
     "./islands/PokemonesList.tsx": $PokemonesList,

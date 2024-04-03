@@ -20,8 +20,6 @@ export const handler: Handlers = {
   
         const pokemones:Pokemon[] = pokemon_request.data;
         
-        console.log(pokemones);
-
         return new Response(JSON.stringify(pokemones),{
             headers: {
                 "Content-Type":"application/json"
@@ -33,16 +31,35 @@ export const handler: Handlers = {
           throw new Error(e);
       }
     },
-    /*
-    // POR HACER
-    DELETE: async (_req: Request, ctx: FreshContext<unknown>) => {
+    
+    // ARREGLAR 
+    DELETE: async (req: Request, ctx: FreshContext) => {
 
-        return new Response(JSON.stringify(pokemones),{
-            headers: {
+      //curl -X DELETE -H "Content-Type: application/json" -d '{"creator":"Ash"}'
+      
+      try{
+
+          const {name} = ctx.params;
+
+          const body = await req.json();
+
+          const response = await Axios.delete(`https://lospoquimones.deno.dev/${name}`,{
+              data: body
+          });
+        
+        if(response.status !== 200){
+            throw new Error(`Error deleting pokemon ${name}`);
+        }
+        
+        return new Response("Pokemon deleted",{
+            headers:{
                 "Content-Type":"application/json"
             }
-        })         
+        });
 
-    }*/
-  };
+      }catch(e){
+          console.error(e);
+      }
+    },
+};
   

@@ -9,6 +9,40 @@ export const PokemonCreate: FunctionComponent = () => {
   const [sound, setSound] = useState<string>("");
   const [creator, setCreator] = useState<string>("");
 
+  const handleCreate = async (e: Event) => {
+    e.preventDefault();
+
+    setError("");
+
+    if (!name || !image || !sound || !creator) {
+      setError("All fields are required!");
+      return;
+    }
+
+    const res = await fetch("/api/addPokemon", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        image,
+        sound,
+        creator,
+      }),
+    });
+
+    const data = await res.json();
+
+    //console.log(data);
+
+    if (res.status !== 200) {
+      setError(data);
+      return;
+    }
+
+    setError("Pokemon created!");
+  }
 
   return (
     <div>
@@ -20,6 +54,7 @@ export const PokemonCreate: FunctionComponent = () => {
             type="text"
             value={name}
             onInput={(e) => setName((e.target as HTMLInputElement).value)}
+            autocomplete="off" //Desactiva el autocompletado
           />
         </label>
         <label>
@@ -28,6 +63,7 @@ export const PokemonCreate: FunctionComponent = () => {
             type="text"
             value={image}
             onInput={(e) => setImage((e.target as HTMLInputElement).value)}
+            autocomplete="off" //Desactiva el autocompletado
           />
         </label>
         <label>
@@ -36,6 +72,7 @@ export const PokemonCreate: FunctionComponent = () => {
             type="text"
             value={sound}
             onInput={(e) => setSound((e.target as HTMLInputElement).value)}
+            autocomplete="off" //Desactiva el autocompletado
           />
         </label>
         <label>
@@ -44,18 +81,12 @@ export const PokemonCreate: FunctionComponent = () => {
             type="text"
             value={creator}
             onInput={(e) => setCreator((e.target as HTMLInputElement).value)}
+            autocomplete="off" //Desactiva el autocompletado
           />
         </label>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setError("Pokemon created!");
-          }}
-        >
-          Create Pokemon
-        </button>
+        <button onClick={handleCreate}>Create Pokemon</button>
+        <p class = "Error">{error}</p>
       </form>
-      <p>{error}</p>
     </div>
   );
 
