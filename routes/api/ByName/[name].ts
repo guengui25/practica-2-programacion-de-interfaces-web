@@ -31,34 +31,41 @@ export const handler: Handlers = {
           throw new Error(e);
       }
     },
-    
-    // ARREGLAR 
     DELETE: async (req: Request, ctx: FreshContext) => {
 
       //curl -X DELETE -H "Content-Type: application/json" -d '{"creator":"Ash"}'
       
       try{
+        const {name} = ctx.params;
+        const body = await req.json();
 
-          const {name} = ctx.params;
-
-          const body = await req.json();
-
-          const response = await Axios.delete(`https://lospoquimones.deno.dev/${name}`,{
-              data: body
-          });
-        
-        if(response.status !== 200){
-            throw new Error(`Error deleting pokemon ${name}`);
-        }
-        
-        return new Response("Pokemon deleted",{
-            headers:{
-                "Content-Type":"application/json"
-            }
+        // No funcionaba correctamente con AXIOS, por lo que uso fetch
+        const response_fetch = await fetch(`https://lospoquimones.deno.dev/${name}`,{
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
         });
 
+        if(response_fetch.status === 404){
+            throw new Error(`Error deleting pokemon ${name} from creator ${body.creator}, not found`);
+        }
+
+        if(response_fetch.status === 204){ // No Content status --> Lo que se espera (lo devuelve la API de los pokimones)
+          return new Response(JSON.stringify(`Pokemon ${name} deleted successfully`),{
+            headers:{
+                "Content-Type":"application/json"
+            },
+            status: 200
+        });
+        }
+        
+       
+
       }catch(e){
-          console.error(e);
+          console.error(e.message);
+          return new Response(JSON.stringify(e.message), {status: 500});
       }
     },
 };

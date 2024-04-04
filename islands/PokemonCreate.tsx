@@ -42,6 +42,11 @@ export const PokemonCreate: FunctionComponent = () => {
     }
 
     setError("Pokemon created!");
+
+    //https://www.freecodecamp.org/espanol/news/javascript-settimeout-como-establecer-un-temporizador-en-javascript-o-esperar-durantante-n-segundos/
+    setTimeout(() => {
+        location.reload();
+    }, 1000);
   }
 
   return (
@@ -85,6 +90,7 @@ export const PokemonCreate: FunctionComponent = () => {
           />
         </label>
         <button onClick={handleCreate}>Create Pokemon</button>
+        <p class = "Comment">The image and sound must be links, you can use <a href="https://catbox.moe/" target="_blank" >Catbox</a> to upload your files </p>
         <p class = "Error">{error}</p>
       </form>
     </div>

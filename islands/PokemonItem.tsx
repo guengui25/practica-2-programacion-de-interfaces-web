@@ -25,6 +25,10 @@ const PokemonItem: FunctionComponent<Pokemon> = (props) => {
         setDeleteModal(true);
     }
 
+    const CloseModal = () => {
+        setDeleteModal(false);
+    }
+
     return (
     <div class="PokemonItem">
         <a href={vinculo} class="NombrePokemon">{name}</a>
@@ -35,7 +39,7 @@ const PokemonItem: FunctionComponent<Pokemon> = (props) => {
         {deleteModal && 
             <div class = "Modal"> 
                 <PokemonDelete name={name}/>
-                <button class="close" onClick={() => setDeleteModal(false)}>Cerrar</button>
+                <button class="close" onClick={CloseModal}>Cerrar</button>
             </div>
             }
     </div>

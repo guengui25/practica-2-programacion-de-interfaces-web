@@ -1,3 +1,4 @@
+import re from "https://esm.sh/v135/preact-render-to-string@6.3.1/X-ZS8q/denonext/preact-render-to-string.mjs";
 import { FunctionComponent } from 'preact';
 import { useState } from "preact/hooks";
 
@@ -17,25 +18,33 @@ const PokemonDelete: FunctionComponent<ModalProps> = (props) => {
 
     const handleDelete = async (e: Event) => {
         e.preventDefault();
+
+        setError("");
+
         if(!creator){
             setError("Creator is required!");
             return;
         }
-        const res = await fetch(`/api/deletePokemon/${name}`,{
+        
+        const res = await fetch(`/api/ByName/${name}`,{
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                creator,
-            }),
+            body: JSON.stringify({creator: creator}),
         });
 
-        if(res.status === 200){
-            setError("Pokemon deleted!");
-        }else{
-            setError("Error deleting pokemon");
+        const data = await res.json();
+
+        if(res.status !== 200){
+            setError(data);
+            return;
         }
+
+        setError(data);
+        setTimeout(() => {
+            location.reload();
+        }, 500);
     }
 
     return(
@@ -53,8 +62,9 @@ const PokemonDelete: FunctionComponent<ModalProps> = (props) => {
                     />
                 </label>
                 <button type="submit">Delete Pokemon</button>
+                <p class="Error">{error}</p>
             </form>
-            <p>{error}</p>
+            
         </>
     );
 

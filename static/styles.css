@@ -187,6 +187,12 @@ Body{
   border-radius: 10px;
   background-color: #f0f0f0;
 
+  .Comment{
+    color: #000;
+    font-size: 15px;
+    font-style: italic;
+  }
+
   label {
     font-size: 20px;
     color: #000;
@@ -206,7 +212,7 @@ Body{
     border: 1px solid #000;
     border-radius: 10px;
     background-color: #00ff00;
-    color: #fff;
+    color: #000000;
     font-size: 20px;
   }
 }

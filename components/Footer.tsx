@@ -12,7 +12,7 @@ const Footer: FunctionComponent = () => {
         </a>
       </p>
       <p>
-        &copy; Abril 2024
+        &copy; April 2024
       </p>
     </footer>
   );
