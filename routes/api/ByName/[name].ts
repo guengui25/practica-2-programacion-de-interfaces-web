@@ -60,8 +60,6 @@ export const handler: Handlers = {
             status: 200
         });
         }
-        
-       
 
       }catch(e){
           console.error(e.message);

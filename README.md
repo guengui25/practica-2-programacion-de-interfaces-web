@@ -4,11 +4,11 @@ https://pr2-pokedex.deno.dev/
 
 ## Rutas
 
- - `/` -> Página principal en la que se muestren todos los pokemones.
+ - `/` -> Página principal en la que se muestren todos los pokemones. (List = Island)
+ - `/alternative` -> Página principal alternativa en la que se muestren todos los pokemones. (List = Component)
  - `/pokemon/:name` -> Página única por cada pokemon
  - `/search` -> Página de búsqueda de pokemones
  - `/add` -> Página de creación de pokemon
-
 
 ## Enunciado 
 En esta práctica deberéis realizar una página web con función de pokedex básica interactiva.

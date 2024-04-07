@@ -6,6 +6,7 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_layout from "./routes/_layout.tsx";
 import * as $add from "./routes/add.tsx";
+import * as $alternative from "./routes/alternative.tsx";
 import * as $api_ByName_name_ from "./routes/api/ByName/[name].ts";
 import * as $api_addPokemon from "./routes/api/addPokemon.ts";
 import * as $api_getAllPokemon from "./routes/api/getAllPokemon.ts";
@@ -25,6 +26,7 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/_layout.tsx": $_layout,
     "./routes/add.tsx": $add,
+    "./routes/alternative.tsx": $alternative,
     "./routes/api/ByName/[name].ts": $api_ByName_name_,
     "./routes/api/addPokemon.ts": $api_addPokemon,
     "./routes/api/getAllPokemon.ts": $api_getAllPokemon,
