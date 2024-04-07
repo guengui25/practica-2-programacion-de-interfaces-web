@@ -48,8 +48,7 @@ const PokemonDelete: FunctionComponent<ModalProps> = (props) => {
     }
 
     return(
-        <>
-            
+        <>   
             <form class="DeletePokemon" onSubmit={handleDelete}>
             <h1 class="Titulo">Delete Pokemon {name}</h1>
                 <label>
@@ -63,8 +62,7 @@ const PokemonDelete: FunctionComponent<ModalProps> = (props) => {
                 </label>
                 <button type="submit">Delete Pokemon</button>
                 <p class="Error">{error}</p>
-            </form>
-            
+            </form>   
         </>
     );
 
