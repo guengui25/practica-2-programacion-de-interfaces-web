@@ -1,5 +1,7 @@
 # Práctica 2 - Hazte con todos
 
+https://pr2-pokedex.deno.dev/
+
 ## Rutas
 
  - `/` -> Página principal en la que se muestren todos los pokemones.
@@ -19,7 +21,7 @@ Con este api (del cuál podéis ver su documentación en https://github.com/YBla
 Utilizando esta API se pide hacer una página web con las siguientes funciones.
 
 - Página principal en la que se muestren todos los pokemones. 
-    - Hacer un componente principal en el que envolver el resto de elementos de la página
+    - Hacer un componente principal en el que envolver el resto de elementos de la página.
     - Crear un componente pokemon genérico para mostrar cada pokemon -> Cada pokemon dispone de una imagen, sonido y nombre. En el componente se deberá de poder ver la imagen, leer el nombre y reproducir el sonido.
     - La imagen y el sonido siempre serán una url a un archivo usable por el navegador.
     - Desde el mismo componente se deberá poder acceder a la opción de eliminar el personaje, con un modal o una nueva página, el modal dará mas nota. -> Para eliminar el pokemon habrá que añadir el creator como método de autenticación.

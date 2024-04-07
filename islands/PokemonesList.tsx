@@ -8,7 +8,6 @@ const PokemonesList: FunctionComponent = () => {
     const [loading, setLoading] = useState<boolean>(true); // Variable de estado para indicar si se está cargando la información
 
     // Se podría haber hecho en el handler de la página, pero para que todas las llamadas a la API estén en un solo lugar, se hace aquí
-    // Así evito tener que forzar el recargar la página al eliminar un pokemon
 
     // https://preactjs.com/guide/v10/hooks#useeffect
     useEffect(() => {                           // useEffect se ejecuta después de que el componente se monta (sugerido por GPT)
