@@ -6,7 +6,7 @@ import { useState } from "preact/hooks";
 // Modal para eliminar un pokemon introduciendo su creador
 
 type ModalProps = {
-    name: String,
+    name: string,
 }
 
 const PokemonDelete: FunctionComponent<ModalProps> = (props) => {
